@@ -16,7 +16,7 @@ local Window = Library:CreateWindow{
 
 -- Fluent Renewed provides ALL 1544 Lucide 0.469.0 https://lucide.dev/icons/ Icons and ALL 9072 Phosphor 2.1.0 https://phosphoricons.com/ Icons for the tabs, icons are optional
 local Tabs = {
-    Main = Window:CreateTab{
+    Combat = Window:CreateTab{
         Title = "Combat",
         Icon = "crosshair"
     },
@@ -28,7 +28,7 @@ local Tabs = {
 
 local Options = Library.Options
 
-Tabs.Main:CreateParagraph("Aligned Paragraph", {
+Tabs.Combat:CreateParagraph("Aligned Paragraph", {
     Title = "Paragraph",
     Content = "This is a paragraph with a center alignment!",
     TitleAlignment = "Middle",
@@ -41,7 +41,7 @@ local function enableMasterToggle(value)
     masterToggle = value
 end
 
-WarTycoonBox:AddToggle("Master Toggle", {
+Tabs.Combat:AddToggle("Master Toggle", {
     Text = "Enable/Disable",
     Default = false,
     Tooltip = "Enable or disable all features globally.",
@@ -89,7 +89,7 @@ local function enableBulletHitManipulation(value)
     end
 end
 
-WarTycoonBox:AddToggle("BulletHit manipulation", {
+Tabs.Combat:AddToggle("BulletHit manipulation", {
     Text = "Magic Bullet [beta]",
     Default = false,
     Tooltip = "Magic Bullet?",
@@ -128,7 +128,7 @@ local function enableRocketHitManipulation(value)
     end
 end
 
-WarTycoonBox:AddToggle("RocketHit manipulation", {
+Tabs.Combat:AddToggle("RocketHit manipulation", {
     Text = "Magic Rocket",
     Default = false,
     Tooltip = "Enables Magic Rocket manipulation",
@@ -273,7 +273,7 @@ local function startRPGSpam()
     end
 end
 
-WarTycoonBox:AddToggle("RPG Spam", {
+Tabs.Combat:AddToggle("RPG Spam", {
     Text = "Toggle RPG Spam",
     Default = false,
     Tooltip = "Enable or disable RPG spam.",
@@ -293,7 +293,7 @@ WarTycoonBox:AddToggle("RPG Spam", {
     end,
 })
 
-WarTycoonBox:AddSlider("Rocket Count", {
+Tabs.Combat:AddSlider("Rocket Count", {
     Text = "Rockets per Spam",
     Default = 1,
     Min = 1,
@@ -305,7 +305,7 @@ WarTycoonBox:AddSlider("Rocket Count", {
     end,
 })
 
-WarTycoonBox:AddSlider("Spam Speed", {
+Tabs.Combat:AddSlider("Spam Speed", {
     Text = "RPG Spam Speed",
     Default = 1,
     Min = 0.1,
@@ -359,7 +359,7 @@ local function startQuickLagRPG()
     end
 end
 
-WarTycoonBox:AddToggle("Quick Lag RPG", {
+Tabs.Combat:AddToggle("Quick Lag RPG", {
     Text = "Quick Lag RPG",
     Default = false,
     Tooltip = "Enable or disable Quick Lag RPG.",
