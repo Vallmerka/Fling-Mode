@@ -14,10 +14,9 @@ local Window = Library:CreateWindow{
     MinimizeKey = Enum.KeyCode.RightControl -- Used when theres no MinimizeKeybind
 }
 
--- Fluent Renewed provides ALL 1544 Lucide 0.469.0 https://lucide.dev/icons/ Icons and ALL 9072 Phosphor 2.1.0 https://phosphoricons.com/ Icons for the tabs, icons are optional
 local Tabs = {
-    Combat = Window:CreateTab{
-        Title = "Combat",
+    Main = Window:CreateTab{
+        Title = "Main",
         Icon = "crosshair"
     },
     Settings = Window:CreateTab{
@@ -26,25 +25,25 @@ local Tabs = {
     }
 }
 
+
 local Options = Library.Options
 
-Tabs.Combat:CreateParagraph("Aligned Paragraph", {
+Tabs.Main:CreateParagraph("Aligned Paragraph", {
     Title = "Paragraph",
     Content = "This is a paragraph with a center alignment!",
     TitleAlignment = "Middle",
     ContentAlignment = Enum.TextXAlignment.Center
 })
 
-local masterToggle = false
 
-local function enableMasterToggle(value)
-    masterToggle = value
-end
+local Toggle = Tabs.Main:CreateToggle("MyToggle", {Title = "Toggle", Default = false })
 
-Tabs.Combat:AddToggle("Master Toggle", {
-    Text = "Enable/Disable",
+Toggle:OnChanged(function()
+    print("Toggle changed:", Options.MyToggle.Value)
+end)
+local Toggle = Tabs.Main:AddToggle("Toggle", {
+    Title = "Enable/Disable",
     Default = false,
-    Tooltip = "Enable or disable all features globally.",
     Callback = enableMasterToggle
 })
 
@@ -89,7 +88,9 @@ local function enableBulletHitManipulation(value)
     end
 end
 
-Tabs.Combat:AddToggle("BulletHit manipulation", {
+Options.MyToggle:SetValue(false)
+
+Tabs.Main:AddToggle("BulletHit manipulation", {
     Text = "Magic Bullet [beta]",
     Default = false,
     Tooltip = "Magic Bullet?",
@@ -128,7 +129,7 @@ local function enableRocketHitManipulation(value)
     end
 end
 
-Tabs.Combat:AddToggle("RocketHit manipulation", {
+Tabs.Main:AddToggle("RocketHit manipulation", {
     Text = "Magic Rocket",
     Default = false,
     Tooltip = "Enables Magic Rocket manipulation",
@@ -273,7 +274,7 @@ local function startRPGSpam()
     end
 end
 
-Tabs.Combat:AddToggle("RPG Spam", {
+Tabs.Main:AddToggle("RPG Spam", {
     Text = "Toggle RPG Spam",
     Default = false,
     Tooltip = "Enable or disable RPG spam.",
@@ -293,7 +294,7 @@ Tabs.Combat:AddToggle("RPG Spam", {
     end,
 })
 
-Tabs.Combat:AddSlider("Rocket Count", {
+Tabs.Main:AddSlider("Rocket Count", {
     Text = "Rockets per Spam",
     Default = 1,
     Min = 1,
@@ -305,7 +306,7 @@ Tabs.Combat:AddSlider("Rocket Count", {
     end,
 })
 
-Tabs.Combat:AddSlider("Spam Speed", {
+Tabs.Main:AddSlider("Spam Speed", {
     Text = "RPG Spam Speed",
     Default = 1,
     Min = 0.1,
@@ -359,7 +360,7 @@ local function startQuickLagRPG()
     end
 end
 
-Tabs.Combat:AddToggle("Quick Lag RPG", {
+Tabs.Main:AddToggle("Quick Lag RPG", {
     Text = "Quick Lag RPG",
     Default = false,
     Tooltip = "Enable or disable Quick Lag RPG.",
