@@ -1,7 +1,8 @@
 local Library = loadstring(game:HttpGetAsync("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/latest/download/Fluent.luau"))()
 local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/SaveManager.luau"))()
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/InterfaceManager.luau"))()
- 
+-- Module
+
 local Window = Library:CreateWindow{
     Title = `Fling Mode`,
     SubTitle = "Private",
@@ -52,6 +53,21 @@ Tabs.Main:CreateParagraph("Aligned Paragraph", {
     TitleAlignment = "Middle",
     ContentAlignment = Enum.TextXAlignment.Center
 })
+    walkSpeedSliderValue = value
+    humanoid.WalkSpeed = 5 * walkSpeedSliderValue
+
+AddSlider("Speed", {
+            Title = "",
+            Description = "",
+            Default = 1,
+            Min = 1,
+            Max = 100,
+            Rounding = 1,
+            Callback = function(Value)
+			Speedw = Value
+   	                humanoid.WalkSpeed = 5 * Speedw
+            end
+        })
 
 Tabs.Main:CreateButton{
     Title = "NoFallDamage",
