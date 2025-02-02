@@ -36,38 +36,48 @@ Library:Notify{
     Duration = 5 -- Set to nil to make the notification not disappear
 }
 
-local Paragraph = Tabs.Main:CreateParagraph("Paragraph", {
-    Title = "Paragraph",
-    Content = "This is a paragraph.\nSecond line!"
-})
-
-print(Paragraph.Value)
-
-Paragraph:SetValue("This paragraph text is changed!")
-
-print(Paragraph.Value)
-
 Tabs.Main:CreateParagraph("Aligned Paragraph", {
     Title = "Paragraph",
     Content = "This is a paragraph with a center alignment!",
     TitleAlignment = "Middle",
     ContentAlignment = Enum.TextXAlignment.Center
 })
-    walkSpeedSliderValue = value
-    humanoid.WalkSpeed = 5 * walkSpeedSliderValue
 
-AddSlider("Speed", {
-            Title = "",
-            Description = "",
-            Default = 1,
-            Min = 1,
-            Max = 100,
-            Rounding = 1,
-            Callback = function(Value)
-			Speedw = Value
-   	                humanoid.WalkSpeed = 5 * Speedw
-            end
-        })
+    Tabs.Main:AddButton({
+    Title = "Default Settings",
+    Description = "Returns to the normal default walk and jump speeds (16, 50)",
+    Callback = function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+        
+    end
+})
+
+local Slider = Tabs.Main:AddSlider("Slider", 
+{
+    Title = "Speed",
+    Description = "Edit your users speed",
+    Default = 16,
+    Min = 1,
+    Max = 100,
+    Rounding = 1,
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+    end
+})
+
+local Slider = Tabs.Main:AddSlider("Slider", 
+{
+    Title = "Jump Power",
+    Description = "Edit your users jump power",
+    Default = 50,
+    Min = 1,
+    Max = 100,
+    Rounding = 1,
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+    end
+})
 
 Tabs.Main:CreateButton{
     Title = "NoFallDamage",
@@ -1024,9 +1034,8 @@ Init()
 UserInputService.InputBegan:Connect(InputBegan)
 UserInputService.InputEnded:Connect(InputEnded)
 RunService.RenderStepped:Connect(Update)
-end)
+end}
 
-Options.MyToggle:SetValue(false)
 
 
 -- Addons:
