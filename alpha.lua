@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGetAsync("https://github.com/Vallmerka/Fluent-Renewed/releases/latest/download/Fluent.luau"))()
+local Library = loadstring(game:HttpGetAsync("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/download/v1.0.4/Fluent.luau"))()
 local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Vallmerka/Fluent-Renewed/master/Addons/SaveManager.luau"))()
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Vallmerka/Fluent-Renewed/master/Addons/InterfaceManager.luau"))()
 -- Module
